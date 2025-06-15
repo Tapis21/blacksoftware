@@ -15,14 +15,6 @@
     <div class="main-wrapper">
     <?php include 'menu.php'; ?>
 
-    <div class="content">
-      <section class="intro">
-        <h1>Bienvenido</h1>
-        <p>Este es tu espacio principal del sistema SIE.</p>
-      </section>
-    </div>
-  </div>
-
     <!-- Footer -->
     <?php include 'footer.php'; ?>
 

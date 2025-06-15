@@ -7,6 +7,13 @@
     </button>
 
     <div class="sidebar bg-sie text-white p-3" style="width: 250px; min-height: 600px;">
+
+    <!-- Aquí va tu mensaje -->
+  <div class="content">
+    <h1>Bienvenido</h1>
+    <p>Este es tu espacio principal del sistema SIE.</p>
+  </div>
+
       <h4 class="mb-4">SIE</h4>
       <ul class="nav flex-column">
         <li class="nav-item"><a class="nav-link text-white" href="/perfil.php?carrera=admin">SIE Administrador</a></li>
