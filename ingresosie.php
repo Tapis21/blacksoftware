@@ -12,17 +12,16 @@
     <link rel="stylesheet" href="ingresosie.css">
 </head>
 <body>
-    <header>
-        <!-- Menu para el ingresosie.php -->
-        <?php include 'menu.php'; ?>
-    </header>
-    
-    <!-- Contenido de la página o sección específica -->
-    <main class="intro">
-        <section>
-            <p>Bienvenido al Sistema de Integración Estudiantil</p>
-        </section>
-    </main>
+    <div class="main-wrapper">
+    <?php include 'menu.php'; ?>
+
+    <div class="content">
+      <section class="intro">
+        <h1>Bienvenido</h1>
+        <p>Este es tu espacio principal del sistema SIE.</p>
+      </section>
+    </div>
+  </div>
 
     <!-- Footer -->
     <?php include 'footer.php'; ?>
