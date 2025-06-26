@@ -1,0 +1,157 @@
+/* ======================================
+   VARIABLES GLOBALES USANDO :root
+   ====================================== */
+/* Variables para colores, fuentes y márgenes que se usan en todo el sitio.
+   Cambiando aquí se actualiza todo automáticamente. */
+:root {
+    --sie-margin: 3px; /* Margen base para separar elementos */
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente legible y moderna */
+    --color-primario: #8d4924;   /* Color principal del sitio (ej. navbar, footer) */
+    --color-secundario: #a94f28; /* Color para hover o elementos secundarios */
+    --color-tercero: #a03616;    /* Color para elementos activos o destacados */
+    --color-texto: #ffffff;      /* Color claro para texto sobre fondos oscuros */
+    --color-fondo: #f0f0f0;      /* Color de fondo general, claro y neutro */
+    --color-contraste: #000000;  /* Color oscuro para texto sobre fondos claros */
+}
+
+/* =========================
+   RESET GENERAL
+   ========================= */
+/* Elimina márgenes y rellenos que los navegadores aplican por defecto para evitar problemas de diseño.
+   box-sizing: border-box hace que el padding y el borde se sumen dentro del ancho total de un elemento, 
+   facilitando que los tamaños no se rompan. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   CUERPO GENERAL
+   ========================= */
+/* Define la fuente principal, color de fondo y color de texto.
+   Además agrega espacio arriba y abajo para que el header y footer fijos no tapen el contenido. */
+body {
+    font-family: var(--font-base); /* Fuente definida en variables */
+    background-color: var(--color-fondo); /* Fondo claro */
+    color: var(--color-contraste); /* Texto oscuro para legibilidad */
+    padding-top: 100px;   /* Espacio para que el header fijo no tape contenido */
+    padding-bottom: 70px; /* Espacio para que el footer fijo no tape contenido */
+}
+
+/* =========================
+   HEADER FIJO SUPERIOR
+   ========================= */
+/* El header queda fijo siempre visible en la parte superior, con fondo y texto institucional. */
+header {
+    position: fixed; /* Se queda fijo aunque se haga scroll */
+    top: 0;          /* Pegado al borde superior */
+    width: 100%;     /* Ocupa todo el ancho */
+    background-color: var(--color-primario); /* Color institucional */
+    color: var(--color-texto); /* Texto blanco */
+    text-align: center; /* Centrar texto */
+    padding: 24px;    /* Espacio interno */
+    z-index: 1000;    /* Para que quede encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+}
+
+/* Tamaño del título en el header */
+header h1 {
+    font-size: 28px;
+}
+
+/* Tamaño del texto secundario en el header */
+header p {
+    font-size: 16px;
+}
+
+/* =========================
+   CONTENIDO PRINCIPAL
+   ========================= */
+/* Contenedor principal centrado, con máximo ancho para mejor lectura,
+   fondo blanco, bordes redondeados y sombra para destacarlo visualmente. */
+main {
+    max-width: 800px; /* Máximo ancho para que no se vea muy extendido */
+    margin: 0 auto;   /* Centrar horizontalmente */
+    padding: 24px;    /* Espacio interno */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para el título principal dentro del main */
+main h2 {
+    font-size: 24px;
+    margin-bottom: 16px; /* Separación debajo */
+    color: var(--color-primario); /* Color institucional */
+}
+
+/* Estilo para párrafos importantes dentro del main */
+main p {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+/* =========================
+   BOTONES DEL MENÚ DE USUARIO (enlaces)
+   ========================= */
+/* Los enlaces se ven como botones con color, padding y bordes redondeados.
+   Se usa display inline-block para que puedan tener ancho y alto. */
+main a {
+    display: inline-block;
+    margin: 8px 8px 16px 0; /* Separación entre botones */
+    padding: 10px 16px; /* Espacio dentro del botón */
+    background-color: var(--color-secundario); /* Color de fondo */
+    color: var(--color-texto); /* Texto blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transición suave al cambiar color */
+}
+
+/* Cambia el color de fondo cuando el mouse pasa encima */
+main a:hover {
+    background-color: var(--color-tercero);
+}
+
+/* =========================
+   ENLACE DE CERRAR SESIÓN
+   ========================= */
+/* Separación y centrado del botón de cerrar sesión */
+.cerrar-sesion {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Botón de cerrar sesión con estilo destacado */
+.cerrar-sesion a {
+    background-color: var(--color-tercero);
+    padding: 10px 16px;
+    border-radius: 4px;
+    color: var(--color-texto);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Al pasar el mouse cambia a color secundario */
+.cerrar-sesion a:hover {
+    background-color: var(--color-secundario);
+}
+
+/* =========================
+   FOOTER FIJO INFERIOR
+   ========================= */
+/* Footer fijo siempre visible abajo, igual estilo institucional */
+footer {
+    position: fixed; /* Fijo en la parte inferior */
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-primario); /* Color institucional */
+    color: var(--color-texto); /* Texto blanco */
+    text-align: center;
+    padding: 16px;
+    font-size: 14px;
+    border-top: 4px solid var(--color-secundario); /* Línea arriba para separar visualmente */
+}
+

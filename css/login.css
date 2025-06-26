@@ -1,0 +1,169 @@
+/* ======================================
+   VARIABLES GLOBALES USANDO :root
+   ====================================== */
+/* Estas variables permiten definir colores, fuentes y márgenes
+   que se pueden reutilizar en todo el CSS usando "var(--nombre)". */
+:root {
+    --sie-margin: 3px; /* Margen base para separar elementos si se necesita */
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente principal */
+    --color-primario: #8d4924;   /* Color institucional principal (ej. header y footer) */
+    --color-secundario: #a94f28; /* Color para botones o hover */
+    --color-tercero: #a03616;    /* Color para efecto hover u otra variante */
+    --color-texto: #ffffff;      /* Texto claro sobre fondo oscuro */
+    --color-fondo: #f0f0f0;      /* Color de fondo general (claro) */
+    --color-contraste: #000000;  /* Texto oscuro sobre fondo claro */
+}
+
+/* ======================================
+   RESET DE ESTILOS BÁSICOS
+   ====================================== */
+/* Elimina márgenes y paddings por defecto que los navegadores agregan. 
+   También activa el modelo de caja para que padding y border no rompan los layouts. */
+* {
+    margin: 0; /* Elimina el margen por defecto del navegador */
+    padding: 0; /* Elimina el padding predeterminado */
+    box-sizing: border-box; /* Incluye padding en el cálculo de tamaño */
+}
+
+/* ======================================
+   CUERPO GENERAL DE LA PÁGINA
+   ====================================== */
+/* Define la fuente, colores y comportamiento base del sitio. */
+body {
+    font-family: var(--font-base); /* Fuente definida en variables */
+    background-color: var(--color-fondo); /* Fondo claro */
+    color: var(--color-contraste); /* Texto oscuro para legibilidad */
+    padding-top: 100px;   /* Espacio para que el header fijo no tape contenido */
+    padding-bottom: 70px; /* Espacio para que el footer fijo no tape contenido */
+}
+
+/* ======================================
+   ENCABEZADO SUPERIOR (HEADER)
+   ====================================== */
+/* Área superior del sitio, usualmente contiene título, nombre del sistema, etc. */
+header {
+    position: fixed; /* Se queda fijo aunque se haga scroll */
+    top: 0;          /* Pegado al borde superior */
+    width: 100%;     /* Ocupa todo el ancho */
+    background-color: var(--color-primario); /* Color institucional */
+    color: var(--color-texto); /* Texto blanco */
+    text-align: center; /* Centrar texto */
+    padding: 24px;    /* Espacio interno */
+    z-index: 1000;    /* Para que quede encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+}
+
+/* Título principal del sistema */
+header h1 {
+    font-size: 40px; /* Tamaño grande para destacar */
+}
+
+/* Subtítulo o descripción */
+header h2 {
+    font-size: 19px;
+    font-weight: normal; /* No tan fuerte como h1 para jerarquía visual */
+}
+
+/* ======================================
+   CONTENIDO PRINCIPAL (MAIN)
+   ====================================== */
+/* Contenedor del contenido central (formulario de login, por ejemplo) */
+main {
+    display: flex;                 /* Permite usar alineación flex */
+    justify-content: center;      /* Centra horizontalmente */
+    align-items: center;          /* Centra verticalmente */
+    padding: 48px;                /* Espaciado interior (3rem ≈ 48px) */
+}
+
+/* ======================================
+   CAJA DE LOGIN (CUADRO BLANCO)
+   ====================================== */
+/* Contenedor que envuelve el formulario. */
+.login-box {
+    background-color: #ffffff;     /* Fondo blanco para contraste */
+    padding: 32px 48px;            /* Espaciado interno (vertical-horizontal) */
+    border-radius: 8px;            /* Esquinas redondeadas */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombra para elevar visualmente */
+    max-width: 500px;              /* Ancho máximo */
+    width: 100%;                   /* Toma todo el ancho posible dentro del límite */
+}
+
+/* Título del formulario */
+.login-box h3 {
+    margin-bottom: 16px;           /* Espacio con respecto al siguiente elemento */
+    font-size: 24px;
+    color: var(--color-primario);  /* Color institucional */
+}
+
+/* Texto descriptivo o instrucciones */
+.login-box p {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+/* ======================================
+   LOGO DENTRO DE LA CAJA
+   ====================================== */
+.login-box img.logo {
+    display: block;        /* Elimina espacio lateral */
+    margin: 16px auto;     /* Centra la imagen horizontalmente */
+    width: 120px;          /* Tamaño fijo de logo */
+}
+
+/* ======================================
+   FORMULARIO DE ACCESO
+   ====================================== */
+form {
+    display: flex;
+    flex-direction: column; /* Acomoda los elementos del formulario verticalmente */
+}
+
+/* Etiquetas de cada campo (nombre, contraseña...) */
+label {
+    margin-top: 16px;
+    font-weight: bold;     /* Hace que el texto de la etiqueta resalte */
+}
+
+/* Campos de texto del formulario */
+input {
+    padding: 10px;          /* Espaciado interno */
+    margin-top: 4px;        /* Separación respecto a la etiqueta */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px;     /* Esquinas suaves */
+    font-size: 16px;
+}
+
+/* Botón de envío */
+button {
+    margin-top: 24px;
+    padding: 13px;
+    background-color: var(--color-secundario); /* Color de botón */
+    color: var(--color-texto);                /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;                          /* Cambia cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease;   /* Suaviza el cambio de color */
+}
+
+/* Estado hover del botón (cuando el mouse está encima) */
+button:hover {
+    background-color: var(--color-tercero); /* Cambia a color más oscuro */
+}
+
+/* ======================================
+   PIE DE PÁGINA FIJO (FOOTER)
+   ====================================== */
+/* Footer que se mantiene abajo aunque no haya mucho contenido */
+footer {
+    background-color: var(--color-primario);  /* Mismo color que el header */
+    color: var(--color-texto);                /* Texto claro para contraste */
+    text-align: center;
+    padding: 16px;                            /* Espaciado interno */
+    font-size: 14px;
+    position: fixed;                          /* Fijo al fondo de la pantalla */
+    bottom: 0;
+    width: 100%;
+    border-top: 4px solid var(--color-secundario); /* Línea arriba para separar visualmente */
+}
+/* Enlaces dentro del footer */
