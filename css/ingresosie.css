@@ -1,118 +1,143 @@
+/* ======================================
+   VARIABLES GLOBALES USANDO :root
+   ====================================== */
+/* Estas variables hacen que el código sea más mantenible.
+   Puedes cambiar un color o fuente desde aquí y se actualiza todo el sitio. */
 :root {
-    --sie-margin: 3px;
+    --sie-margin: 3px; /* Margen base para separar elementos entre sí */
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente legible y moderna */
+    --color-primario: #8d4924;   /* Color institucional principal (navbar y footer) */
+    --color-secundario: #a94f28; /* Color de hover o elementos secundarios */
+    --color-tercero: #a03616;    /* Color para elementos activos o destacados */
+    --color-texto: #ffffff;      /* Texto claro para fondos oscuros */
+    --color-fondo: #f0f0f0;      /* Fondo neutro general para el sitio */
+    --color-contraste: #000000;  /* Texto oscuro para buena legibilidad */
 }
 
-/* Estructura principal */
+/* ======================================
+   ESTILOS GENERALES DEL CUERPO DEL SITIO
+   ====================================== */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    min-height: 720px;
+    margin: 0; /* Elimina el margen por defecto del navegador */
+    padding: 0; /* Elimina el padding predeterminado */
+    font-family: var(--font-base); /* Aplica la fuente global definida en :root */
+    background-color: var(--color-fondo); /* Fondo claro y suave */
+    display: block; /* Layout básico (no es flexbox aquí aún) */
+    flex-direction: row; /* Preparado si luego se convierte en flex container */
+    min-height: 1000px; /* Asegura que el sitio tenga suficiente altura para el contenido */
+    color: var(--color-contraste); /* Texto oscuro por defecto */
 }
 
+/* ======================================
+   ENVOLTURA PRINCIPAL (CONTENEDOR FLEX)
+   ====================================== */
+/* Este contenedor agrupa el sidebar (menú) y el contenido principal */
 .main-wrapper {
-    display: flex;
-    flex-grow: 1;
-    min-height: 600px;
+    display: flex;           /* Activa flexbox */
+    flex-direction: row;     /* Los hijos se colocan horizontalmente */
 }
 
-/* Sidebar / Navbar vertical */
+/* ======================================
+   BARRA LATERAL FIJA (NAVBAR IZQUIERDO)
+   ====================================== */
 .navbar {
-    background-color: #8d4925 !important;
-    width: 250px;
-    min-height: 600px;
-    padding: 20px;
-    flex-shrink: 0;
+    position: fixed;         /* Siempre visible en la pantalla */
+    top: 0px;
+    left: 0px;
+    width: 250px;            /* Ancho fijo del menú lateral */
+    height: 690px;           /* Altura deseada, se puede hacer dinámica con 100vh */
+    background-color: var(--color-primario) !important; /* Usa color principal definido */
+    padding: 20px;           /* Espacio interior alrededor de los enlaces */
+    z-index: 999;            /* Asegura que esté por encima de otros elementos */
+    overflow-y: auto;        /* Si hay muchos elementos, permite scroll vertical */
+}
+
+/* ======================================
+   CONTENEDOR DEL CONTENIDO DENTRO DEL NAVBAR
+   ====================================== */
+/* Agrupa los elementos del menú lateral (enlaces, títulos, etc.) */
+.sidebar {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;      /* Acomoda los elementos verticalmente */
+    justify-content: flex-start; /* Alinea todo hacia la parte superior */
+    padding-top: 20px;
 }
 
+/* ======================================
+   ENLACES DEL NAVBAR
+   ====================================== */
+/* Estilo común para todos los <a> del navbar */
 .navbar .nav-link {
-    color: #ffffff !important;
-    font-weight: bold;
+    color: var(--color-texto) !important; /* Texto blanco sobre fondo oscuro */
+    font-weight: bold;                   /* Más visible */
     font-size: 15px;
-    padding: 8px 12px;
-    transition: background-color 0.3s;
+    padding: 8px 12px;                   /* Espacio clickeable */
+    transition: background-color 0.3s;   /* Transición suave al pasar el mouse */
 }
 
+/* Hover para los enlaces del menú */
 .navbar .nav-link:hover {
-    background-color: #a94f28;
-    border-radius: 10px;
+    background-color: var(--color-secundario) !important; /* Color al pasar el cursor */
+    border-radius: 10px; /* Hace más amigable el diseño */
 }
 
+/* ======================================
+   TÍTULO DE LA BARRA LATERAL
+   ====================================== */
+/* Aplica estilo al nombre o logo del sistema en la barra lateral */
 .navbar .navbar-brand {
-    color: #ffffff !important;
-    margin-bottom: 20px;
+    color: var(--color-texto) !important;
+    margin-bottom: 20px; /* Separación con respecto a los enlaces */
 }
 
-/* Contenido principal */
-.content {
-    flex-grow: 1;
-    padding: 5px;
-    min-height: 10px;
+/* ======================================
+   CONTENIDO PRINCIPAL (A LA DERECHA DEL MENÚ)
+   ====================================== */
+.main-content {
+    margin-left: 250px; /* Deja espacio para que no tape el navbar */
+    padding: 10px;
+    width: calc(100% - 250px); /* Ajusta el ancho dinámicamente */
+    min-height: 940px;         /* Altura mínima para evitar recortes visuales */
+    background-color: var(--color-fondo);
+    box-sizing: border-box;   /* Incluye padding en el cálculo de tamaño */
+    padding-bottom: 80px;     /* Deja espacio al final para el footer fijo */
 }
 
- .content h1 {
+/* ======================================
+   TEXTOS DE BIENVENIDA (En la parte central)
+   ====================================== */
+.content h1 {
     text-align: center;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
     font-size: 24px;
-    padding: 3px;
-    /* color: #a03616; */
- }
+    padding: 5px;
+}
+
 .content p {
     text-align: center;
     font-size: 16px;
-}
-/* Menú personalizado (no el de Bootstrap) */
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+    padding: 5px;
 }
 
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu li {
-    margin: 5px 0;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #a03616;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px 16.5px;
-    background-color: #FFFFFF;
-    border: 5.5px solid #ff8033;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-/* Footer fijo al final */
+/* ======================================
+   PIE DE PÁGINA FIJO (FOOTER)
+   ====================================== */
 footer {
     height: 60px;
-    background-color: #8d4925;
-    color: white;
+    background-color: var(--color-primario); /* Mismo que el navbar para coherencia visual */
+    color: var(--color-texto);               /* Texto blanco legible */
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-base);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: auto;
-
+    align-items: center;    /* Centrado vertical del texto */
+    justify-content: center;/* Centrado horizontal */
     position: fixed;
     bottom: 0px;
-    left: 0px;
-    width: 100%; /* Puedes ajustar esto al ancho de tu contenedor principal */
-    max-width: 100%;
-    z-index: 1000;
+    left: 250px;            /* Deja espacio para el menú lateral */
+    width: calc(100% - 250px); /* Asegura que no se sobreponga con el navbar */
+    z-index: 1000;          /* Por encima del contenido */
 }
+
+/* ======================================
+   ESTILOS ADICIONALES PARA EL FOOTER
+   ====================================== */
